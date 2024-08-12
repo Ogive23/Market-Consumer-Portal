@@ -12,21 +12,16 @@ import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import ToggleColorMode from "./ToggleColorMode";
 import ToggleLanguageMode from "./ToggleLanguageMode";
-import ResponsiveLogo from "./ResponsiveLogo";
+import { useSelector } from "react-redux";
+import { selectTranslations } from "../../redux/reducers/language";
 
 interface AppAppBarProps {
   mode: PaletteMode;
-  // language: String;
   toggleColorMode: () => void;
-  // toggleLanguageMode: () => void;
 }
 
-function AppAppBar({
-  mode,
-  // language,
-  toggleColorMode,
-}: // toggleLanguageMode,
-AppAppBarProps) {
+function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
+  const t = useSelector(selectTranslations);
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -111,7 +106,7 @@ AppAppBarProps) {
                   sx={{ py: "6px", px: "12px" }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Features
+                    {t.Features}
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -156,10 +151,7 @@ AppAppBarProps) {
               }}
             >
               <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-              {/* <ToggleLanguageMode
-                language={language}
-                toggleLanguageMode={toggleLanguageMode}
-              /> */}
+              <ToggleLanguageMode />
               <Button
                 color="primary"
                 variant="text"
