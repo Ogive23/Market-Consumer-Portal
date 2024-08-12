@@ -50,7 +50,7 @@ export default function Features() {
   const selectedFeature = items[selectedItemIndex];
 
   return (
-    <Container id="features" sx={{ py: { xs: 8, sm: 16 } }}>
+    <Container id="features" sx={{ py: { xs: 8, sm: 2 } }}>
       <Grid container spacing={6}>
         <Grid item xs={12} md={6}>
           <div>
