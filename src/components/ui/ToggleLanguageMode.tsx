@@ -1,36 +1,48 @@
 import * as React from "react";
-import { PaletteMode } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
 import LanguageIcon from "@mui/icons-material/Language";
 import PublicIcon from "@mui/icons-material/Public";
+import { useTranslation } from "react-i18next";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { useDispatch, useSelector } from "react-redux";
+import { setLang } from "@/redux/reducers/language";
 
-interface ToggleLanguageModeProps {
-  language: String;
-  toggleLanguageMode: () => void;
-}
+function ToggleLanguageMode() {
+  const lang = useSelector((state) => state.language.lang);
+  const supportedLangs = useSelector((state) => state.language.supportedLangs);
+  const dispatch = useDispatch();
 
-function ToggleLanguageMode({
-  language,
-  toggleLanguageMode,
-}: ToggleLanguageModeProps) {
+  function onclick(event: SelectChangeEvent) {
+    dispatch(setLang(event.target.value));
+  }
+
   return (
-    <Box sx={{ maxWidth: "32px" }}>
-      <Button
-        variant="text"
-        onClick={toggleLanguageMode}
-        size="small"
-        aria-label="button to toggle theme"
-        sx={{ minWidth: "32px", height: "32px", p: "4px" }}
+    <FormControl
+      style={{ textAlign: "center", paddingBottom: 0 }}
+      variant="standard"
+      sx={{ m: 1, minWidth: 120 }}
+      size="small"
+    >
+      <Select
+        value={lang}
+        onChange={onclick}
+        displayEmpty
+        disableUnderline={true}
+        inputProps={{ "aria-label": "Without label" }}
       >
-        {language === "ar" ? (
-          <LanguageIcon fontSize="small" />
-        ) : (
-          <PublicIcon fontSize="small" />
-        )}
-      </Button>
-    </Box>
+        {Object.entries(supportedLangs).map(([code, name]) => (
+          <MenuItem value={code} key={code}>
+            {name}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 }
 
