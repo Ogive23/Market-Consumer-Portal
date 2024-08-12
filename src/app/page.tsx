@@ -19,6 +19,9 @@ import Highlights from "@/components/ui/Highlights";
 import Testimonials from "@/components/ui/Testimonials";
 import Features from "@/components/ui/Features";
 import Hero from "@/components/ui/Hero";
+import { createStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+import { Store } from "@/redux/store";
 
 export default function LandingPage() {
   // const [locale, setLocale] = React.useState<String>("ar");
@@ -34,31 +37,33 @@ export default function LandingPage() {
   // };
 
   return (
-    <ThemeProvider theme={LPtheme}>
-      {/* <div dir={locale == "ar" ? "rtl" : "ltr"}> */}
-      <CssBaseline />
-      <AppAppBar
-        mode={mode}
-        // language={locale}
-        toggleColorMode={toggleColorMode}
-        // toggleLanguageMode={toggleLanguageMode}
-      />
-      <Hero />
-      <Box sx={{ bgcolor: "background.default" }}>
-        <LogoCollection />
-        <Features />
-        <Divider />
-        <Testimonials />
-        <Divider />
-        <Highlights />
-        <Divider />
-        <Pricing />
-        <Divider />
-        <FAQ />
-        <Divider />
-        <Footer />
-      </Box>
-      {/* </div> */}
-    </ThemeProvider>
+    <Provider store={Store}>
+      <ThemeProvider theme={LPtheme}>
+        {/* <div dir={locale == "ar" ? "rtl" : "ltr"}> */}
+        <CssBaseline />
+        <AppAppBar
+          mode={mode}
+          // language={locale}
+          toggleColorMode={toggleColorMode}
+          // toggleLanguageMode={toggleLanguageMode}
+        />
+        <Hero />
+        <Box sx={{ bgcolor: "background.default" }}>
+          <LogoCollection />
+          <Features />
+          <Divider />
+          <Testimonials />
+          <Divider />
+          <Highlights />
+          <Divider />
+          <Pricing />
+          <Divider />
+          <FAQ />
+          <Divider />
+          <Footer />
+        </Box>
+        {/* </div> */}
+      </ThemeProvider>
+    </Provider>
   );
 }
