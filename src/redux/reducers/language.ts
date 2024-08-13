@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { defaultLang, supportedLangs } from "../../config/i18nConfig";
 import en from "../../../public/static/translations/en.json";
 import ar from "../../../public/static/translations/ar.json";
+import { RootState } from "@/redux/store"; // Use RootState type
 
 interface InitialState {
   status: string;
@@ -25,7 +26,8 @@ export const setLangAsync = createAsyncThunk(
   "language/setLangAsync",
   async (lang, { getState, dispatch }) => {
     const resolvedLang =
-      window.localStorage.getItem("language") || getState().language.lang;
+      window.localStorage.getItem("language") ||
+      (getState() as RootState).language.lang;
     dispatch(language.actions.setLang(resolvedLang));
     return resolvedLang;
   }

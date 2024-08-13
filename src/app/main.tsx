@@ -15,12 +15,7 @@ import Testimonials from "@/components/ui/Testimonials";
 import Features from "@/components/ui/Features";
 import Hero from "@/components/ui/Hero";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectTranslations,
-  setLang,
-  setLangAsync,
-} from "@/redux/reducers/language";
-import { defaultLang } from "@/config/i18nConfig";
+import { setLangAsync } from "@/redux/reducers/language";
 
 export default function Main() {
   const [mode, setMode] = React.useState<PaletteMode>("light");
@@ -30,7 +25,7 @@ export default function Main() {
     setMode((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
-  const i18nStatus: string = useSelector((state) => state.language.status);
+  const i18nStatus: string = useSelector((state: any) => state.language.status);
   const dispatch = useDispatch<any>();
 
   React.useEffect(() => {
