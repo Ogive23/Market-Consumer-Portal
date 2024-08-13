@@ -106,7 +106,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                   sx={{ py: "6px", px: "12px" }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    {t.Features}
+                    {t.navbar.features}
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -114,7 +114,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                   sx={{ py: "6px", px: "12px" }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Testimonials
+                    {t.navbar.testimonials}
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -122,7 +122,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                   sx={{ py: "6px", px: "12px" }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Highlights
+                    {t.navbar.highlights}
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -130,7 +130,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                   sx={{ py: "6px", px: "12px" }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Pricing
+                    {t.navbar.pricing}
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -138,7 +138,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                   sx={{ py: "6px", px: "12px" }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    FAQ
+                    {t.navbar.faq}
                   </Typography>
                 </MenuItem>
               </Box>
@@ -160,9 +160,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                 href="/sign-in/"
                 target="_blank"
               >
-                {/* {language == "ar" ? "تسجيل الدخول" : */}
-                Sign in
-                {/* } */}
+                {t.navbar.sign_in}
               </Button>
               <Button
                 color="primary"
@@ -172,7 +170,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                 href="/sign-up/"
                 target="_blank"
               >
-                Sign up
+                {t.navbar.sign_up}
               </Button>
             </Box>
             <Box sx={{ display: { sm: "", md: "none" } }}>

@@ -1,3 +1,14 @@
 {
-    "Features": "مزايا"
+  "navbar": {
+    "features": "خدمات",
+    "testimonials": "شهادات العملاء",
+    "highlights": "مميزات",
+    "pricing": "الأسعار",
+    "faq": "الأسئلة الشائعة",
+    "sign_in": "تسجيل الدخول",
+    "sign_up": "سجل معنا"
+  },
+  "features": {
+    "product_features": "مزايا المنتج"
   }
+}

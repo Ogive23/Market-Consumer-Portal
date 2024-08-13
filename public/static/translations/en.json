@@ -1,3 +1,14 @@
 {
-    "Features": "Features"
+  "navbar": {
+    "features": "Features",
+    "testimonials": "Testimonials",
+    "highlights": "Highlights",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "sign_in": "Sign in",
+    "sign_up": "Sign up"
+  },
+  "features": {
+    "product_features": "Product Features"
   }
+}
