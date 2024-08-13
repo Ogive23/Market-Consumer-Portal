@@ -29,7 +29,11 @@ export default function RootLayout({
         /> */}
       </head>
       <meta name="viewport" content="initial-scale=1, width=device-width" />
-      <body suppressHydrationWarning={true} className={inter.className}>
+      <body
+        style={{ margin: 0, padding: 0 }}
+        suppressHydrationWarning={true}
+        className={inter.className}
+      >
         {children}
       </body>
     </html>
