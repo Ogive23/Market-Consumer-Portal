@@ -1,12 +1,18 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useTranslation } from "react-i18next";
-import { defaultLang, supportedLangs } from "../../config/i18nConfig";
+import {
+  defaultDirection,
+  defaultLang,
+  directions,
+  supportedLangs,
+} from "../../config/i18nConfig";
 import en from "../../../public/static/translations/en.json";
 import ar from "../../../public/static/translations/ar.json";
 import { RootState } from "@/redux/store"; // Use RootState type
 
 interface InitialState {
   status: string;
+  direction: string;
   lang: string;
   supportedLangs: object;
   translations: object;
@@ -14,6 +20,7 @@ interface InitialState {
 
 const initialState = {
   status: "loading",
+  direction: defaultDirection,
   lang: defaultLang,
   supportedLangs: { ...supportedLangs },
   translations: {
@@ -25,7 +32,7 @@ const initialState = {
 export const setLangAsync = createAsyncThunk(
   "language/setLangAsync",
   async (lang, { getState, dispatch }) => {
-    await new Promise((r) => setTimeout(r, 2000));
+    // await new Promise((r) => setTimeout(r, 2000));
 
     const resolvedLang =
       window.localStorage.getItem("language") ||
@@ -41,6 +48,7 @@ export const language = createSlice({
   reducers: {
     setLang: (state, action) => {
       state.lang = action.payload;
+      state.direction = directions[action.payload];
       window.localStorage.setItem("language", action.payload);
     },
   },
@@ -50,6 +58,7 @@ export const language = createSlice({
     });
     builder.addCase(setLangAsync.fulfilled, (state, action) => {
       state.lang = action.payload;
+      state.direction = directions[action.payload];
       state.status = "idle";
     });
   },

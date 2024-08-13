@@ -26,41 +26,41 @@ export default function Main() {
     setMode((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
-  const i18nStatus: string = useSelector((state: any) => state.language.status);
+  const languageStatus: string = useSelector(
+    (state: any) => state.language.status
+  );
+  const languageDirection: string = useSelector(
+    (state: any) => state.language.direction
+  );
   const dispatch = useDispatch<any>();
 
   React.useEffect(() => {
     dispatch(setLangAsync());
   }, []);
 
-  return i18nStatus === "loading" ? (
+  return languageStatus === "loading" ? (
     <Loading></Loading>
   ) : (
     <ThemeProvider theme={LPtheme}>
-      {/* <div dir={locale == "ar" ? "rtl" : "ltr"}> */}
-      <CssBaseline />
-      <AppAppBar
-        mode={mode}
-        // language={locale}
-        toggleColorMode={toggleColorMode}
-        // toggleLanguageMode={toggleLanguageMode}
-      />
-      <Hero />
-      <Box sx={{ bgcolor: "background.default" }}>
-        <LogoCollection />
-        <Features />
-        <Divider />
-        <Testimonials />
-        <Divider />
-        <Highlights />
-        <Divider />
-        <Pricing />
-        <Divider />
-        <FAQ />
-        <Divider />
-        <Footer />
-      </Box>
-      {/* </div> */}
+      <div dir={languageDirection}>
+        <CssBaseline />
+        <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
+        <Hero />
+        <Box sx={{ bgcolor: "background.default" }}>
+          <LogoCollection />
+          <Features />
+          <Divider />
+          <Testimonials />
+          <Divider />
+          <Highlights />
+          <Divider />
+          <Pricing />
+          <Divider />
+          <FAQ />
+          <Divider />
+          <Footer />
+        </Box>
+      </div>
     </ThemeProvider>
   );
 }
