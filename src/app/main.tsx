@@ -16,6 +16,7 @@ import Features from "@/components/ui/Features";
 import Hero from "@/components/ui/Hero";
 import { useDispatch, useSelector } from "react-redux";
 import { setLangAsync } from "@/redux/reducers/language";
+import Loading from "@/components/ui/Loading";
 
 export default function Main() {
   const [mode, setMode] = React.useState<PaletteMode>("light");
@@ -31,9 +32,9 @@ export default function Main() {
   React.useEffect(() => {
     dispatch(setLangAsync());
   }, []);
-  console.log(i18nStatus);
+
   return i18nStatus === "loading" ? (
-    <h1>Loading...</h1>
+    <Loading></Loading>
   ) : (
     <ThemeProvider theme={LPtheme}>
       {/* <div dir={locale == "ar" ? "rtl" : "ltr"}> */}

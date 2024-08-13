@@ -25,6 +25,8 @@ const initialState = {
 export const setLangAsync = createAsyncThunk(
   "language/setLangAsync",
   async (lang, { getState, dispatch }) => {
+    await new Promise((r) => setTimeout(r, 2000));
+
     const resolvedLang =
       window.localStorage.getItem("language") ||
       (getState() as RootState).language.lang;
@@ -54,7 +56,6 @@ export const language = createSlice({
 });
 
 export const selectTranslations = (state: any) => {
-  console.log(state.language.translations[state.language.lang]);
   return state.language.translations[state.language.lang];
 };
 
