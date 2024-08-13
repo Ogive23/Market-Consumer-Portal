@@ -12,7 +12,7 @@ export default function NotFound() {
     <div
       style={{
         width: "100%",
-        height: window.innerHeight,
+        height: "100vh",
         placeContent: "center",
       }}
     >
