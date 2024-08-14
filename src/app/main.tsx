@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLangAsync } from "@/redux/reducers/language";
 import Loading from "@/components/ui/Loading";
 
-export default function Main() {
+export default function MainPage() {
   const [mode, setMode] = React.useState<PaletteMode>("light");
   const LPtheme = createTheme(getLPTheme(mode));
 
