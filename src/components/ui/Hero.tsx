@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { alpha, SelectChangeEvent } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -9,11 +11,20 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTranslations } from "@/redux/reducers/language";
+import { useRouter } from "next/navigation";
+import { changeStep } from "@/redux/reducers/common";
+import { Pages } from "@/app/general";
+// import Router, { useRouter } from "next/router";
 
 export default function Hero() {
   const t = useSelector(selectTranslations);
   const dispatch = useDispatch();
+  const router = useRouter();
 
+  function onClick(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    dispatch(changeStep({ pageIndex: Pages.ShoppingPage, route: "/shopping" }));
+  }
   return (
     <Box
       id="hero"
@@ -76,7 +87,12 @@ export default function Hero() {
             useFlexGap
             sx={{ pt: 2, width: { xs: "100%", sm: "auto" } }}
           >
-            <Button variant="contained" color="primary" href="/shop">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={onClick}
+              href="/shop"
+            >
               {t.entry.button}
             </Button>
           </Stack>
